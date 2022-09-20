@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #050505;
+}
+
+.box{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transform: rotateX(-30deg);
+    animation: animate 4s linear infinite;
+}
+
+@keyframes animate{
+    0%{
+        transform: rotateX(-30deg) rotateY(0deg);
+    }
+
+    100%{
+        transform: rotateX(-30deg) rotateY(360deg);
+    }
+}
+
+.box div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;   
+}
+
+.box div span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#151515, #00ec00);
+    transform: rotateY(calc(90deg * var(--side))) translateZ(100px); 
+}
+
+.top-side{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    background: #222;
+    transform: rotateX(90deg) translateZ(100px);  /*nam ngang - nam ben tren hop*/
+    /* rotateX la truc toa do X, translateZ la tang khoang cach bao nhieu tren truc Z */
+}
+
+.top-side::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 200px;   
+    background: #0f0;
+    transform: translateZ(-300px);  /*di chuyen xuong duoi hop */
+    filter: blur(20px); /*lam mo cho day hop la 20px*/
+    box-shadow: 0 0 120px rgba(255, 255, 255, 0.986), 
+    0 0 200px rgb(13, 0, 255),
+    0 0 300px rgb(13, 0, 255);
+}
+
